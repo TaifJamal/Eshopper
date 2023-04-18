@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Admin\AdminControler;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -33,6 +35,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth','checkAdmin')->group(f
 
     //clients
     Route::resource('clients',ClientController::class);
+    Route::resource('roles',RoleController::class);
+    Route::resource('users',UserController::class);
+
+
 });
 
     Route::get('/',[SiteController::class,'index'])->name('site.index');
